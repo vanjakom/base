@@ -1,0 +1,55 @@
+From 30aae0755a2c670b50354277f623eac6290aa092 Mon Sep 17 00:00:00 2001
+From: NerdyNick <nerdynick@gmail.com>
+Date: Tue, 22 Feb 2011 11:56:51 -0700
+Subject: [PATCH 12/18] FLUME-474: flume executable doesn't support extending java.library.path with flume-env.sh
+
+---
+ bin/flume                      |    2 +-
+ bin/flume-env.sh.template      |    3 ++-
+ src/docs/UserGuide/Environment |    6 +++++-
+ 3 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/bin/flume b/bin/flume
+index 6d57340..c5e6c8d 100755
+--- a/bin/flume
++++ b/bin/flume
+@@ -155,7 +155,7 @@ if [ "$cygwin" == false ] ; then
+       break
+   done
+ 
+-  JOPTS="$JOPTS -Djava.library.path=$CMDPATH/lib "
++  JOPTS="$JOPTS -Djava.library.path=$CMDPATH/lib:$LD_LIBRARY_PATH:$JAVA_LIBRARY_PATH"
+ 
+   append_jars_onto_classpath "$CMDPATH/lib"
+   append_jars_onto_classpath "$CMDPATH/libtest"
+diff --git a/bin/flume-env.sh.template b/bin/flume-env.sh.template
+index 769907a..a70a794 100755
+--- a/bin/flume-env.sh.template
++++ b/bin/flume-env.sh.template
+@@ -21,4 +21,5 @@
+ 
+ # export JAVA_HOME=/usr/lib/jvm/java-6-sun
+ 
+-# export FLUME_MASTER="localhost"
+\ No newline at end of file
++# export FLUME_MASTER="localhost"
++# export JAVA_LIBRARY_PATH=/path/to/extra/libs:$JAVA_LIBRARY_PATH
+diff --git a/src/docs/UserGuide/Environment b/src/docs/UserGuide/Environment
+index af40cbd..93f83fa 100644
+--- a/src/docs/UserGuide/Environment
++++ b/src/docs/UserGuide/Environment
+@@ -50,6 +50,10 @@ out the command line being executed.
+ +FLUME_VERBOSE_JAVA+ :: If this is toggled along with FLUME_VERBOSE,
+ the "-verbose" flag will be passed to the JVM running flume.
+ 
+-
+++LD_LIBRARY_PATH+ :: Populate with a : separated list of file paths to
++extend the java.library.path aspect of Flume. This allows you to include 
++native libraries in the java lookup path. Example usage would be with Lzo
++where you need to extend the path with the Lzo C libraries contained in your
++Hadoop install.
+ 
+ 
+-- 
+1.7.0.4
+

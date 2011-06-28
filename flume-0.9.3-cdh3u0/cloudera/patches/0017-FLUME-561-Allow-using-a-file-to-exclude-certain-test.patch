@@ -1,0 +1,48 @@
+From cc394c1f4c2bb0fbfd011f661189964f24ffdb94 Mon Sep 17 00:00:00 2001
+From: Jonathan Hsieh <jon@cloudera.com>
+Date: Mon, 14 Mar 2011 17:14:30 -0700
+Subject: [PATCH 17/18] FLUME-561: Allow using a file to exclude certain tests from build
+
+---
+ build.xml               |    7 +++++--
+ 1 files changed, 5 insertions(+), 2 deletions(-)
+ create mode 100644 src/javatest/empty-file
+
+diff --git a/build.xml b/build.xml
+index c02db3f..4f80119 100644
+--- a/build.xml
++++ b/build.xml
+@@ -80,6 +80,7 @@ to call at top-level: ant deploy-contrib compile-core-test
+   <property name="test.log.dir" value="${test.build.dir}/logs"/>
+   <property name="test.build.classes" value="${test.build.dir}/classes"/>
+   <property name="test.include" value="Test*"/>
++  <property name="test.exclude.file" value="${test.src.dir}/empty-file"/>
+   <property name="test.classpath.id" value="test.classpath"/>
+   <property name="test.output" value="no"/>
+   <property name="test.timeout" value="900000"/>
+@@ -598,7 +599,8 @@ to call at top-level: ant deploy-contrib compile-core-test
+       </classpath>
+       <batchtest todir="${build.test}" unless="testcase">
+         <fileset dir="${test.src.dir}"
+-                 includes="**/Test*.java" excludes="**/${test.exclude}.java" />
++                 includes="**/Test*.java" excludes="**/${test.exclude}.java"
++		 excludesfile="${test.exclude.file}"/>
+       </batchtest>
+       <batchtest todir="${build.test}" if="testcase">
+         <fileset dir="${test.src.dir}" includes="**/${testcase}.java"/>
+@@ -999,7 +1001,8 @@ to call at top-level: ant deploy-contrib compile-core-test
+       <formatter type="${test.junit.output.format}" />
+       <batchtest todir="${build.test}" unless="testcase">
+         <fileset dir="${test.src.dir}"
+-                 includes="**/Test*.java" excludes="**/${test.exclude}.java" />
++                 includes="**/Test*.java" excludes="**/${test.exclude}.java" 
++		 excludesfile="${test.exclude.file}"/>
+       </batchtest>
+       <batchtest todir="${build.test}" if="testcase">
+         <fileset dir="${test.src.dir}" includes="**/${testcase}.java"/>
+diff --git a/src/javatest/empty-file b/src/javatest/empty-file
+new file mode 100644
+index 0000000..e69de29
+-- 
+1.7.0.4
+

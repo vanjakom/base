@@ -1,0 +1,24 @@
+From 20fa05b95c94a9d187edbd58b74be2bbdffdb4ca Mon Sep 17 00:00:00 2001
+From: Jonathan Hsieh <jon@cloudera.com>
+Date: Fri, 18 Feb 2011 06:59:46 -0800
+Subject: [PATCH 14/18] FLUME-530: Rename "Flume Windows Guide" to be "Installing Flume Nodes on Windows"
+
+---
+ src/docs/Windows/Windows |    4 ++--
+ 1 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/docs/Windows/Windows b/src/docs/Windows/Windows
+index e810e94..1a364c2 100644
+--- a/src/docs/Windows/Windows
++++ b/src/docs/Windows/Windows
+@@ -1,5 +1,5 @@
+-Flume Windows Guide
+-===================
++Installing Flume Nodes on Windows
++=================================
+ flume-dev@cloudera.org
+ 
+ // version number comes from command line
+-- 
+1.7.0.4
+

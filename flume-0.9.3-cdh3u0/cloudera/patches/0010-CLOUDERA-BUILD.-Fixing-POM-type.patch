@@ -1,0 +1,26 @@
+From ef24555bbc4d03c5b9e62c9ed0243faf3d3e4d9b Mon Sep 17 00:00:00 2001
+From: Andrew Bayer <andrew.bayer@gmail.com>
+Date: Mon, 7 Mar 2011 17:37:04 -0800
+Subject: [PATCH 10/18] CLOUDERA-BUILD. Fixing POM type.
+
+---
+ cloudera/maven-packaging/flume/pom.xml |    3 ++-
+ 1 files changed, 2 insertions(+), 1 deletions(-)
+
+diff --git a/cloudera/maven-packaging/flume/pom.xml b/cloudera/maven-packaging/flume/pom.xml
+index 3cdce67..73f7ee8 100644
+--- a/cloudera/maven-packaging/flume/pom.xml
++++ b/cloudera/maven-packaging/flume/pom.xml
+@@ -28,7 +28,8 @@
+   <groupId>com.cloudera.flume</groupId>
+   <artifactId>flume</artifactId>
+   <version>${cdh.flume.version}</version>
+-
++  <packaging>pom</packaging>
++  
+   <dependencies>
+     <!-- Dependencies: compile -->
+     
+-- 
+1.7.0.4
+

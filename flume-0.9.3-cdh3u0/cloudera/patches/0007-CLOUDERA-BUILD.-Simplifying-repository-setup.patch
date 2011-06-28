@@ -1,0 +1,42 @@
+From b28637ebc77f86d6e76984346d185202548c1018 Mon Sep 17 00:00:00 2001
+From: Andrew Bayer <andrew.bayer@gmail.com>
+Date: Mon, 7 Mar 2011 10:51:18 -0800
+Subject: [PATCH 07/18] CLOUDERA-BUILD. Simplifying repository setup.
+
+---
+ cloudera/maven-packaging/pom.xml |   19 +++++++++++++++++++
+ 1 files changed, 19 insertions(+), 0 deletions(-)
+
+diff --git a/cloudera/maven-packaging/pom.xml b/cloudera/maven-packaging/pom.xml
+index 47d19da..dc6905e 100644
+--- a/cloudera/maven-packaging/pom.xml
++++ b/cloudera/maven-packaging/pom.xml
+@@ -33,6 +33,25 @@
+   <name>CDH flume root</name>
+   <properties><cdh.flume.version>0.9.3-cdh3u0-SNAPSHOT</cdh.flume.version></properties>
+ 
++  <repositories>
++    <repository>
++      <id>cdh.releases.repo</id>
++      <url>https://repository.cloudera.com/content/repositories/releases</url>
++      <name>CDH Releases Repository</name>
++      <snapshots>
++        <enabled>false</enabled>
++      </snapshots>
++    </repository>
++    <repository>
++      <id>cdh.snapshots.repo</id>
++      <url>https://repository.cloudera.com/content/repositories/snapshots</url>
++      <name>CDH Snapshots Repository</name>
++      <snapshots>
++        <enabled>true</enabled>
++      </snapshots>
++    </repository>
++  </repositories>
++  
+   <scm>
+     <connection>scm:git:git@git.sf.cloudera.com:flume.git</connection>
+     <url>git@git.sf.cloudera.com:flume.git</url>
+-- 
+1.7.0.4
+

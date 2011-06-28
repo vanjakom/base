@@ -1,0 +1,42 @@
+From 6bee8d9565687f577fcab99e6571bcb708ca2409 Mon Sep 17 00:00:00 2001
+From: Andrew Bayer <andrew.bayer@gmail.com>
+Date: Mon, 7 Mar 2011 11:45:55 -0800
+Subject: [PATCH 08/18] CLOUDERA-BUILD. Fixing redundant repositories entry.
+
+---
+ cloudera/maven-packaging/pom.xml |   19 -------------------
+ 1 files changed, 0 insertions(+), 19 deletions(-)
+
+diff --git a/cloudera/maven-packaging/pom.xml b/cloudera/maven-packaging/pom.xml
+index dc6905e..5f74dbb 100644
+--- a/cloudera/maven-packaging/pom.xml
++++ b/cloudera/maven-packaging/pom.xml
+@@ -32,25 +32,6 @@
+   
+   <name>CDH flume root</name>
+   <properties><cdh.flume.version>0.9.3-cdh3u0-SNAPSHOT</cdh.flume.version></properties>
+-
+-  <repositories>
+-    <repository>
+-      <id>cdh.releases.repo</id>
+-      <url>https://repository.cloudera.com/content/repositories/releases</url>
+-      <name>CDH Releases Repository</name>
+-      <snapshots>
+-        <enabled>false</enabled>
+-      </snapshots>
+-    </repository>
+-    <repository>
+-      <id>cdh.snapshots.repo</id>
+-      <url>https://repository.cloudera.com/content/repositories/snapshots</url>
+-      <name>CDH Snapshots Repository</name>
+-      <snapshots>
+-        <enabled>true</enabled>
+-      </snapshots>
+-    </repository>
+-  </repositories>
+   
+   <scm>
+     <connection>scm:git:git@git.sf.cloudera.com:flume.git</connection>
+-- 
+1.7.0.4
+
