@@ -5,3 +5,6 @@ Required projects:
 
 Install:
 
+add:
+HADOOP_HOME=/<path>/base/hadoop-0.20.2-cdh3u0/
+FLUME_HOME=/<path>/base/flume-0.9.3-cdh3u0/
